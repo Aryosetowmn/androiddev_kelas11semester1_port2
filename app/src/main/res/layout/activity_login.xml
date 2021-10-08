@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".LoginActivity">
+
+    <ImageView
+        android:layout_margin="75dp"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:src="@drawable/logo_epl"/>
+
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="username"
+        android:id="@+id/txtusername"
+        android:textSize="25sp"
+        android:textColorHint="@color/CoGelap"
+        android:layout_marginRight="60dp"
+        android:layout_marginLeft="60dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="password"
+        android:inputType="textPassword"
+        android:id="@+id/txtpassword"
+        android:textSize="25sp"
+        android:textColorHint="@color/CoGelap"
+        android:layout_marginRight="60dp"
+        android:layout_marginLeft="60dp"/>/>
+
+    <Button
+        android:layout_marginTop="60dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:id="@+id/tombollogin"
+        android:text="login"
+        android:textSize="16sp"
+        android:textColor="@color/CoTulisan"
+        android:fontFamily="@font/cream"
+        android:background="@drawable/button_rounded"
+        />
+
+</LinearLayout>

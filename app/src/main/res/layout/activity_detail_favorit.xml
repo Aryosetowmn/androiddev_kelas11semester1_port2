@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#232F34"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/menuFavorit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Menu"
+                android:textColor="@color/CoTulisan"
+                android:textSize="35dp"
+                android:fontFamily="@font/cream"
+                android:layout_centerInParent="true"/>
+
+            <ImageView
+                android:id="@+id/dislikeFavorit"
+                android:src="@drawable/ic_dislike"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_gravity="right"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="8dp"
+                />
+
+        </RelativeLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".DetailActivity"
+        android:orientation="vertical">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_margin="30dp"
+            >
+
+            <ImageView
+                android:id="@+id/iv_image_klub_detailFavorit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                />
+
+
+            <TextView
+                android:id="@+id/tv_nama_detailFavorit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="nama"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="35dp"
+                android:fontFamily="@font/cream"
+                />
+
+            <TextView
+                android:id="@+id/tv_tahun_detailFavorit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="tahun"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="25dp"
+                android:fontFamily="@font/cream"
+                android:layout_marginBottom="20dp"
+
+                />
+            <TextView
+                android:id="@+id/tv_deskripsi_detailFavorit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="deskripsi"
+                android:textColor="#000000"
+                android:textSize="20dp"
+                android:fontFamily="@font/cream"
+                android:layout_marginBottom="30dp"
+                />
+
+        </LinearLayout>
+
+
+
+    </ScrollView>
+</LinearLayout>
