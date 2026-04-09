@@ -1,4 +1,4 @@
-# Premier League Teams App (Java) - Android Educational Project
+# Premier League Teams App (Java)
 
 Nov 8, 2021 | Built in 11th grade this Android app displays Premier League club information with a list → detail flow and lets users save teams to Favorites using Realm. Made to practice RecyclerView, API networking, image loading, and local storage.
 
