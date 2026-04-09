@@ -1,63 +1,90 @@
-# LaLiga Teams Application
+# Premier League Teams App (Java) - Android Educational Project
 
-An advanced Android application for exploring and managing football teams in the Spanish LaLiga. This project illustrates key Android development techniques, including data fetching, local database integration, and intuitive navigation.
-
----
-
-## Table of Contents
-- [Introduction](#introduction)
-- [Features](#features)
-- [Technologies Used](#technologies-used)
-- [Setup Instructions](#setup-instructions)
-- [Usage](#usage)
-- [Project Status](#project-status)
+Oct 8, 2021 | Built in 11th grade this Android app displays Premier League club information with a list → detail flow and lets users save teams to Favorites using Realm. Made to practice RecyclerView, API networking, image loading, and local storage.
 
 ---
 
-## Introduction
+## Preview (Screenshots)
 
-This Android app allows users to explore a list of football teams in the Spanish LaLiga. Users can view team details, add them to their favorites, and interact with the app via a clean UI and smooth navigation. The project was designed as part of an educational initiative to demonstrate intermediate Android development concepts.
+> Taruh screenshot kamu di folder `docs/` lalu update nama filenya di tabel ini.
+
+Splash | Login | Home / Team List | Team Detail | Favorites |
+|---|---|---|---|---|
+| ![Splash](docs/splashscreen.png) | ![login](docs/login.png) | ![Home / Team List](docs/home.png) | ![Team Detail](docs/detail.png) | ![Favorites](docs/favorites.png) |
 
 ---
 
 ## Features
-- Display a list of LaLiga football teams fetched from an API in real-time.
-- View detailed information including team name, formation year, and description.
-- Save teams to a "Favorites" list using Realm database integration.
-- Bookmark and manage teams seamlessly.
-- Advanced RecyclerView usage with callback interfaces for user interaction.
+
+- Display list of LaLiga teams fetched from API
+- Team detail screen (image + description, etc.)
+- Add / remove teams to **Favorites**
+- Local storage using **Realm Database**
+- RecyclerView-based UI + CardView
+- Image loading using **Picasso**
 
 ---
 
-## Technologies Used
-- Java
-- Android Studio
-- Picasso for image loading
-- Realm database for local storage
-- API integration through Android Networking library
+## Tech Stack
+
+- **Language:** Java
+- **Build System:** Gradle
+- **UI:** ConstraintLayout, RecyclerView, Material Components, CardView
+- **Libraries:**
+  - AndroidX AppCompat
+  - RecyclerView (+ recyclerview-selection)
+  - **AndroidNetworking** (API request)
+  - **Picasso** (image loading)
+  - **Realm** (local database / favorites)
+  - Material Components
+- **compileSdk / targetSdk:** 30
+- **minSdk:** 21
 
 ---
 
-## Setup Instructions
+## Project Structure (High Level)
 
-1. **Clone the repository**:
+- `app/` - Android application module
+- `app/src/main/java/...` - Activities, adapters, models, API & Realm logic
+- `app/src/main/res/` - Layouts, drawables, strings, themes
+- `gradle/` + `gradlew*` - Gradle wrapper files
+- `docs/` - Screenshots for README
+
+---
+
+## Getting Started
+
+### Requirements
+- Android Studio (recommended: versi terbaru)
+- JDK 11
+- Android SDK Platform 30 installed (compileSdk 30)
+
+### Run Locally
+1. Clone repository:
    ```bash
    git clone https://github.com/Aryosetowmn/androiddev_kelas11semester1_port2.git
    ```
-2. **Open the project** in Android Studio.
-3. Configure project dependencies and build the application.
-4. **Run the app** on an emulator or physical device.
+2. Open project di **Android Studio**
+3. Tunggu **Gradle Sync**
+4. Run di:
+   - Emulator (Device Manager), atau
+   - Android device (USB Debugging enabled)
 
 ---
 
-## Usage
+## Notes
 
-- **Explore Teams**: View list of LaLiga clubs.
-- **Detailed View**: Click on a club to see detailed information and images.
-- **Manage Favorites**: Add or remove teams into your personal Favorites list.
+Repository ini dibuat untuk pembelajaran dan portfolio.
+
+Kalau mau dikembangkan ke standar “real-world app”, kamu bisa pertimbangkan:
+- Architecture: MVVM
+- Local database: Room (atau tetap Realm tapi rapihin layernya)
+- Repository pattern + caching
+- Error/loading state yang lebih rapih
 
 ---
 
-## Project Status
+## Author
 
-This project is complete and serves as a showcase of intermediate Android development practices.
+**Aryosetowmn**  
+Repository: `Aryosetowmn/androiddev_kelas11semester1_port2`
