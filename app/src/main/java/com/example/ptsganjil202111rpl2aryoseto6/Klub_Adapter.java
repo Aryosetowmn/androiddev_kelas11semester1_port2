@@ -10,21 +10,21 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 public class Klub_Adapter extends RecyclerView.Adapter<Klub_Adapter.ViewHolder> {
-    ArrayList<Model_Klub> modelKlub_list;
-    Callback callback;
 
-    public interface Callback{
+    private final ArrayList<Model_Klub> modelKlub_list;
+    private final Callback callback;
+
+    public interface Callback {
         void onClick(int position);
     }
 
-    public Klub_Adapter(ArrayList<Model_Klub> mahasiswaArrayList, Callback callback) {
-        this.modelKlub_list = mahasiswaArrayList;
+    public Klub_Adapter(ArrayList<Model_Klub> modelKlubList, Callback callback) {
+        this.modelKlub_list = modelKlubList;
         this.callback = callback;
     }
 
@@ -32,33 +32,52 @@ public class Klub_Adapter extends RecyclerView.Adapter<Klub_Adapter.ViewHolder> 
     @Override
     public Klub_Adapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.item_list,parent,false);
+        View view = inflater.inflate(R.layout.item_list, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull Klub_Adapter.ViewHolder holder, int position) {
+        Model_Klub item = modelKlub_list.get(position);
 
-        holder.nama.setText(modelKlub_list.get(position).getNama());
-        holder.tahun.setText(modelKlub_list.get(position).getTahun());
-        holder.deskripsi.setText(modelKlub_list.get(position).getDeskripsi());
-        Picasso.get()
-                .load(modelKlub_list.get(position).getImage())
-                .into(holder.image);
+        holder.nama.setText(item.getNama());
+        holder.tahun.setText(item.getTahun());
+
+        // Deskripsi dari API panjang banget -> kalau mau lebih ringan, dipotong
+        String deskripsi = item.getDeskripsi();
+        if (deskripsi != null && deskripsi.length() > 140) {
+            deskripsi = deskripsi.substring(0, 140) + "...";
+        }
+        holder.deskripsi.setText(deskripsi != null ? deskripsi : "");
+
+        String imageUrl = item.getImage();
+
+        // IMPORTANT: jangan pernah Picasso.load("") atau load(null)
+        if (imageUrl == null || imageUrl.trim().isEmpty()) {
+            holder.image.setImageResource(R.mipmap.ic_launcher); // placeholder default dulu
+        } else {
+            Picasso.get()
+                    .load(imageUrl)
+                    .placeholder(R.mipmap.ic_launcher) // tampilkan saat loading
+                    .error(R.mipmap.ic_launcher)       // tampilkan kalau gagal
+                    .fit()
+                    .centerCrop()
+                    .into(holder.image);
+        }
     }
 
     @Override
     public int getItemCount() {
-        return (modelKlub_list != null)? modelKlub_list.size():0;
+        return (modelKlub_list != null) ? modelKlub_list.size() : 0;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private ImageView image;
-        private TextView nama;
-        private TextView tahun;
-        private TextView deskripsi;
-        private CardView cardView;
+        private final ImageView image;
+        private final TextView nama;
+        private final TextView tahun;
+        private final TextView deskripsi;
+        private final CardView cardView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -69,10 +88,9 @@ public class Klub_Adapter extends RecyclerView.Adapter<Klub_Adapter.ViewHolder> 
             deskripsi = itemView.findViewById(R.id.tv_deskipsi);
             cardView = itemView.findViewById(R.id.cv_cardview);
 
-            cardView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    callback.onClick(getLayoutPosition());
+            cardView.setOnClickListener(v -> {
+                if (callback != null && getBindingAdapterPosition() != RecyclerView.NO_POSITION) {
+                    callback.onClick(getBindingAdapterPosition());
                 }
             });
         }
